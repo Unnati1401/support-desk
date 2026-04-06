@@ -11,7 +11,7 @@ A helpdesk / ticket management system built with React. Supports three roles (Re
 
 ```bash
 # 1. Clone the repository
-git clone <repo-url>
+git clone https://github.com/Unnati1401/support-desk.git
 cd support-desk
 
 # 2. Install dependencies
