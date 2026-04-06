@@ -1,0 +1,166 @@
+import { ago, mkId } from "../utils/helpers";
+
+const INITIAL_TICKETS = [
+  {
+    id: "TK-001",
+    title: "Login page throws 500 error on Safari",
+    description:
+      "Users on Safari 16 are unable to log in. The page shows a 500 internal server error after entering credentials. This affects approximately 20% of our user base.",
+    status: "open",
+    priority: "high",
+    category: "Bug Report",
+    createdBy: "Sarah Jones",
+    assignedTo: null,
+    assignedTeam: "Frontend",
+    createdAt: ago(2),
+    updatedAt: ago(1),
+    messages: [
+      { id: mkId(), author: "Sarah Jones", role: "requester", body: "This is urgent — many customers are affected. We've had 15 complaints today.", createdAt: ago(1.8) },
+      { id: mkId(), author: "Alex Chen", role: "agent", body: "Looking into this now. Can you share the exact Safari version?", createdAt: ago(1.5) },
+    ],
+    history: [
+      { type: "created", by: "Sarah Jones", at: ago(2), detail: "Ticket created" },
+      { type: "assigned", by: "System", at: ago(1.9), detail: "Assigned to Frontend team" },
+      { type: "reply", by: "Sarah Jones", at: ago(1.8), detail: "Reply added" },
+      { type: "reply", by: "Alex Chen", at: ago(1.5), detail: "Agent replied" },
+    ],
+  },
+  {
+    id: "TK-002",
+    title: "Unable to download invoices from billing portal",
+    description:
+      "When clicking 'Download PDF' on any invoice in the billing portal, nothing happens. Tried in Chrome and Firefox.",
+    status: "pending",
+    priority: "medium",
+    category: "Billing",
+    createdBy: "Marcus Lee",
+    assignedTo: "Maria Santos",
+    assignedTeam: "Billing",
+    createdAt: ago(5),
+    updatedAt: ago(3),
+    messages: [
+      { id: mkId(), author: "Marcus Lee", role: "requester", body: "This is blocking our accounting team from closing monthly books.", createdAt: ago(4.5) },
+      { id: mkId(), author: "Maria Santos", role: "agent", body: "Hi Marcus, reproduced the issue. It's a CORS config problem with the PDF service. Working on a fix.", createdAt: ago(4) },
+    ],
+    history: [
+      { type: "created", by: "Marcus Lee", at: ago(5), detail: "Ticket created" },
+      { type: "assigned", by: "Maria Santos", at: ago(4.8), detail: "Assigned to Maria Santos" },
+      { type: "status", by: "Maria Santos", at: ago(4), detail: "Status changed to Pending" },
+    ],
+  },
+  {
+    id: "TK-003",
+    title: "Request: Dark mode for the dashboard",
+    description:
+      "Our team works late hours and would love a dark mode option for the main dashboard. It would reduce eye strain significantly.",
+    status: "open",
+    priority: "low",
+    category: "Feature Request",
+    createdBy: "Diana Prince",
+    assignedTo: null,
+    assignedTeam: null,
+    createdAt: ago(24),
+    updatedAt: ago(24),
+    messages: [],
+    history: [{ type: "created", by: "Diana Prince", at: ago(24), detail: "Ticket created" }],
+  },
+  {
+    id: "TK-004",
+    title: "API rate limiting causing production outages",
+    description:
+      "Our integration is hitting rate limits unexpectedly. We're on the Enterprise plan which should allow 10k req/min but we're being throttled at 1k. Production service is degraded.",
+    status: "open",
+    priority: "critical",
+    category: "Technical",
+    createdBy: "Erik Nolan",
+    assignedTo: "James Wilson",
+    assignedTeam: "Backend",
+    createdAt: ago(0.5),
+    updatedAt: ago(0.3),
+    messages: [
+      { id: mkId(), author: "Erik Nolan", role: "requester", body: "This is causing a P0 incident on our end. Need immediate help.", createdAt: ago(0.45) },
+      { id: mkId(), author: "James Wilson", role: "agent", body: "Escalating this now. Checking the rate limit config for your account.", createdAt: ago(0.3) },
+    ],
+    history: [
+      { type: "created", by: "Erik Nolan", at: ago(0.5), detail: "Ticket created" },
+      { type: "assigned", by: "James Wilson", at: ago(0.4), detail: "Assigned to James Wilson" },
+    ],
+  },
+  {
+    id: "TK-005",
+    title: "Two-factor authentication not sending SMS codes",
+    description:
+      "2FA codes via SMS are not being delivered. Email-based 2FA works fine. This is affecting multiple users.",
+    status: "resolved",
+    priority: "high",
+    category: "Account",
+    createdBy: "Lena Kim",
+    assignedTo: "Tom Baker",
+    assignedTeam: "Security",
+    createdAt: ago(48),
+    updatedAt: ago(12),
+    messages: [
+      { id: mkId(), author: "Tom Baker", role: "agent", body: "Issue was with SMS provider outage. Switched to backup provider — codes work now.", createdAt: ago(13) },
+    ],
+    history: [
+      { type: "created", by: "Lena Kim", at: ago(48), detail: "Ticket created" },
+      { type: "assigned", by: "Tom Baker", at: ago(47), detail: "Assigned to Tom Baker" },
+      { type: "status", by: "Tom Baker", at: ago(12), detail: "Status changed to Resolved" },
+    ],
+  },
+  {
+    id: "TK-006",
+    title: "Webhook deliveries failing silently",
+    description:
+      "Webhooks appear to send successfully in our dashboard but the receiving endpoint logs show no incoming requests.",
+    status: "open",
+    priority: "high",
+    category: "Technical",
+    createdBy: "Ryan Clark",
+    assignedTo: null,
+    assignedTeam: "Backend",
+    createdAt: ago(3),
+    updatedAt: ago(3),
+    messages: [],
+    history: [{ type: "created", by: "Ryan Clark", at: ago(3), detail: "Ticket created" }],
+  },
+  {
+    id: "TK-007",
+    title: "Incorrect currency conversion on checkout",
+    description:
+      "Users paying in EUR are being charged the USD amount without conversion. This results in significant overcharges.",
+    status: "open",
+    priority: "critical",
+    category: "Billing",
+    createdBy: "Hana Fischer",
+    assignedTo: null,
+    assignedTeam: null,
+    createdAt: ago(1),
+    updatedAt: ago(1),
+    messages: [],
+    history: [{ type: "created", by: "Hana Fischer", at: ago(1), detail: "Ticket created" }],
+  },
+  {
+    id: "TK-008",
+    title: "Team member invites not arriving",
+    description:
+      "When inviting new team members, the invitation email is not received. We've checked spam folders.",
+    status: "closed",
+    priority: "medium",
+    category: "Account",
+    createdBy: "Yuki Tanaka",
+    assignedTo: "Priya Nair",
+    assignedTeam: "Support",
+    createdAt: ago(72),
+    updatedAt: ago(36),
+    messages: [
+      { id: mkId(), author: "Priya Nair", role: "agent", body: "Issue resolved — domain was on blocklist. Invites resent.", createdAt: ago(37) },
+    ],
+    history: [
+      { type: "created", by: "Yuki Tanaka", at: ago(72), detail: "Ticket created" },
+      { type: "status", by: "Priya Nair", at: ago(37), detail: "Status changed to Closed" },
+    ],
+  },
+];
+
+export default INITIAL_TICKETS;

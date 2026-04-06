@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# SupportDesk
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A helpdesk / ticket management system built with React. Supports three roles (Requester, Agent, Manager) with ticket creation, assignment, triage, and conversation threads.
+
+## Prerequisites
+
+- **Node.js** >= 16
+- **npm** >= 8
+
+## Getting Started
+
+```bash
+# 1. Clone the repository
+git clone <repo-url>
+cd support-desk
+
+# 2. Install dependencies
+npm install
+
+# 3. Start the development server
+npm start
+```
+
+The app will open at [http://localhost:3000](http://localhost:3000).
 
 ## Available Scripts
 
-In the project directory, you can run:
+| Command           | Description                                      |
+| ----------------- | ------------------------------------------------ |
+| `npm start`       | Run the dev server with hot reload               |
+| `npm test`        | Launch the test runner in watch mode              |
+| `npm run build`   | Create an optimized production build in `build/`  |
 
-### `npm start`
+## Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+src/
+  App.js                  # Root component (standalone version with all views)
+  App.jsx                 # Modular entry point using extracted components
+  components/
+    layout/
+      Sidebar.jsx         # Navigation sidebar
+    tickets/
+      ActivityTimeline.jsx
+      MessageThread.jsx
+      TicketBadges.jsx
+      TicketFilters.jsx
+      TicketInfoPanel.jsx
+      TicketRow.jsx
+      TicketTable.jsx
+    ui/                   # Reusable UI primitives (Badge, Divider, NavItem, etc.)
+  context/
+    AppContext.jsx         # Global state (React Context + useReducer)
+  data/
+    constants.js          # Teams, categories, agents, seed tickets
+  hooks/
+    useTickets.js          # Ticket filtering, counting, and triage hooks
+  pages/
+    CreateTicketPage.jsx
+    DashboardPage.jsx
+    LoginPage.jsx
+    TicketDetailPage.jsx
+    TriagePage.jsx
+  utils/
+    helpers.js             # Date formatting, dropdown helpers
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **React** 19
+- **noplin-uis** - UI component library (cards, tables, timelines, dropdowns)
+- **react-icons** - Heroicons 2 outline icon set
+- **react-router-dom** - Routing
+- **Create React App** - Build tooling
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Roles
 
-### `npm run build`
+| Role        | Capabilities                                                 |
+| ----------- | ------------------------------------------------------------ |
+| Requester   | Create tickets, view own tickets, reply to threads           |
+| Agent       | View all tickets, change status, assign tickets, triage queue|
+| Manager     | Full access including triage queue and team management        |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## License
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Private
